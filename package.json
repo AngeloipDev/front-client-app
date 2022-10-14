@@ -16,7 +16,8 @@
     "react-google-login": "^5.2.2",
     "react-icons": "^4.6.0",
     "react-router-dom": "^6.4.2",
-    "react-toastify": "^9.0.8"
+    "react-toastify": "^9.0.8",
+    "vite-plugin-rewrite-all": "^1.0.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.17",

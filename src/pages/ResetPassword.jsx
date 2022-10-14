@@ -4,6 +4,9 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import styles from "../styles/Login.module.css";
 import { Input } from "../components/Input";
 import { BiLeftArrowAlt } from "react-icons/bi";
+import axios from "axios";
+import { isEmpty, isLength, isMatch } from "../helpers/validate";
+import { Toast } from "../helpers/toast";
 
 const initialState = {
   password: "",
@@ -13,11 +16,11 @@ const initialState = {
 export const ResetPassword = () => {
   const [visible, setVisible] = useState(false);
   const [form, setForm] = useState(initialState);
+  const { password, confirmpassword } = form;
   const ref = useRef(null);
   const navigate = useNavigate();
-  const param = useParams();
-
-  console.log(param);
+  const { token } = useParams();
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleVisible = () => {
     setVisible(!visible);
@@ -27,7 +30,7 @@ export const ResetPassword = () => {
     navigate("/", { replace: true });
   };
 
-  const handleRegister = () => {
+  const handleReset = () => {
     setForm(initialState);
     ref.current.reset();
   };
@@ -36,9 +39,40 @@ export const ResetPassword = () => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("La contraseña es", form);
+
+    if (isEmpty(password) || isEmpty(confirmpassword)) {
+      return Toast("error", "Complete todos los campos");
+    }
+
+    if (isLength(password)) {
+      return Toast("error", "La contraseña debe tener al menos 6 caracteres");
+    }
+
+    if (!isMatch(password, confirmpassword)) {
+      return Toast("error", "Las contraseñas no coinciden");
+    }
+
+    setIsLoading(true);
+    await axios
+      .post(
+        "http://localhost:5000/api/user/auth/reset_pass",
+        { password },
+        {
+          withCredentials: true,
+          headers: {
+            Authorization: token
+          }
+        }
+      )
+      .then((res) => {
+        handleReset();
+        Toast("success", res.data.msg);
+      })
+      .catch((err) => Toast("error", err.response.data.msg));
+
+    setIsLoading(false);
   };
   return (
     <div className={styles.loginContainer}>
@@ -61,8 +95,12 @@ export const ResetPassword = () => {
             onChange={handleChange}
           />
 
-          <button type="submit" className={styles.btnSubmitForm}>
-            Restablecer
+          <button
+            type="submit"
+            className={styles.btnSubmitForm}
+            disabled={isLoading}
+          >
+            {isLoading ? "Restableciendo..." : "Restablecer"}
           </button>
 
           <div className={styles.forgotPassword}>

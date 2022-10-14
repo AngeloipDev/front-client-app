@@ -137,12 +137,12 @@ export const Login = () => {
   };
 
   useEffect(() => {
-    function start() {
+    const start = () => {
       gapi.client.init({
         clientId: import.meta.env.VITE_G_CLIENT_ID,
         scope: ""
       });
-    }
+    };
     gapi.load("client:auth2", start);
   }, []);
   return (
