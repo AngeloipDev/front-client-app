@@ -8,6 +8,7 @@ function App() {
   return (
     <div className="App">
       <h1>{import.meta.env.VITE_G_GO}</h1>
+      <h3>RAAAAAAAAAAAAAAAAAAAAAAA</h3>
       <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src="/vite.svg" className="logo" alt="Vite logo" />
