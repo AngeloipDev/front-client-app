@@ -9,6 +9,7 @@ import styles from "../styles/UserDropdown.module.css";
 import axios from "axios";
 import { Toast } from "../helpers/toast";
 import { useAuth } from "../context/AuthContext";
+import { GoogleLogout } from "react-google-login";
 
 export const UserDropdown = () => {
   const ref = useRef();
@@ -80,10 +81,17 @@ export const UserDropdown = () => {
             <FiHelpCircle className={styles.icon} />
             <Link>Help</Link>
           </li>
-          <li onClick={logOut}>
-            <BiLogOut className={styles.icon} />
-            <Link>Logout</Link>
-          </li>
+
+          <GoogleLogout
+            clientId={import.meta.env.VITE_G_CLIENT_ID}
+            render={(renderProps) => (
+              <li onClick={renderProps.onClick}>
+                <BiLogOut className={styles.icon} />
+                <Link>Logout</Link>
+              </li>
+            )}
+            onLogoutSuccess={logOut}
+          />
         </ul>
       </div>
     </div>

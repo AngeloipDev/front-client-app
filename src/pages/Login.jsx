@@ -111,7 +111,6 @@ export const Login = () => {
 
   const googleSuccess = async (res) => {
     const token = res?.tokenId;
-    console.log(token);
     try {
       await axios
         .post(

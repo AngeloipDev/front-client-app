@@ -24,9 +24,11 @@ export const Input = ({
         className={styles.form__input}
         disabled={disabled}
       />
+
       <span className={styles.icon} onClick={onClick}>
         {icon}
       </span>
+
       <label className={styles.form__label} htmlFor={id}>
         {text}
       </label>

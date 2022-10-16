@@ -48,8 +48,8 @@
   top: 75%;
   right: 10px;
   transform: translateY(-50%);
-  font-size: 21px;
+  font-size: 20px;
   color: #000;
-  cursor: pointer; /*  user-select: none; visibility: hidden; */
+  cursor: pointer;
   user-select: none;
 }
