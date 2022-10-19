@@ -8,10 +8,17 @@ export const Input = ({
   value,
   onClick,
   icon,
+  iconSize = 20,
   text,
   disabled,
-  placeholderStatic
+  staticPlaceholder,
+  iconPosition = "right"
 }) => {
+  const positon =
+    iconPosition === "left"
+      ? `${styles.leftPosition}`
+      : `${styles.rightPosition}`;
+
   return (
     <div className={styles.cont_input}>
       <input
@@ -21,16 +28,26 @@ export const Input = ({
         onChange={onChange}
         value={value}
         autoComplete="off"
-        placeholder={placeholderStatic ? placeholderStatic : " "}
+        placeholder={staticPlaceholder ? staticPlaceholder : " "}
         className={styles.form__input}
         disabled={disabled}
+        style={{
+          paddingRight: icon && iconPosition === "right" && "32px",
+          paddingLeft: icon && iconPosition === "left" && "32px"
+        }}
       />
 
-      <span className={styles.icon} onClick={onClick}>
-        {icon}
-      </span>
+      {icon && (
+        <span
+          style={{ height: iconSize, fontSize: iconSize }}
+          className={`${styles.icon} ${positon}`}
+          onClick={onClick}
+        >
+          {icon}
+        </span>
+      )}
 
-      {!placeholderStatic && (
+      {!staticPlaceholder && (
         <label className={styles.form__label} htmlFor={id}>
           {text}
         </label>

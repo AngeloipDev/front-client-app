@@ -157,36 +157,45 @@ export const Login = () => {
             onSubmit={isRegister ? handleSubmitRegister : handleSubmitLogin}
           >
             {isRegister && (
+              <div style={{ marginBottom: "15px" }}>
+                <Input
+                  type="text"
+                  text="Nombre"
+                  name="name"
+                  onChange={handleChange}
+                />
+              </div>
+            )}
+            <div style={{ marginBottom: "15px" }}>
               <Input
                 type="text"
-                text="Nombre"
-                name="name"
+                text="Correo electrónico"
+                name="email"
                 onChange={handleChange}
               />
-            )}
-            <Input
-              type="text"
-              text="Correo electrónico"
-              name="email"
-              onChange={handleChange}
-            />
-            <Input
-              type={visible ? "text" : "password"}
-              text="Contraseña"
-              name="password"
-              icon={visible ? <AiOutlineEye /> : <AiOutlineEyeInvisible />}
-              onClick={handleVisible}
-              onChange={handleChange}
-            />
-            {isRegister && (
+            </div>
+
+            <div style={{ marginBottom: "15px" }}>
               <Input
                 type={visible ? "text" : "password"}
-                text="Confirmar Contraseña"
-                name="confirmpassword"
+                text="Contraseña"
+                name="password"
+                icon={visible ? <AiOutlineEye /> : <AiOutlineEyeInvisible />}
                 onClick={handleVisible}
                 onChange={handleChange}
               />
-            )}
+            </div>
+            <div style={{ marginBottom: "15px" }}>
+              {isRegister && (
+                <Input
+                  type={visible ? "text" : "password"}
+                  text="Confirmar Contraseña"
+                  name="confirmpassword"
+                  onClick={handleVisible}
+                  onChange={handleChange}
+                />
+              )}
+            </div>
 
             <button type="submit" className={styles.btnSubmitForm}>
               {isRegister && isLoading

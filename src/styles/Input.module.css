@@ -43,12 +43,16 @@
 
 .icon {
   position: absolute;
-  top: 50%;
-  right: 10px;
   transform: translateY(-50%);
-  font-size: 20px;
   color: #000;
-  height: 20px;
   cursor: pointer;
   user-select: none;
+}
+.icon.leftPosition {
+  top: 50%;
+  left: 10px;
+}
+.icon.rightPosition {
+  top: 50%;
+  right: 10px;
 }

@@ -4,7 +4,12 @@ import { Input } from "./Input";
 export const Search = () => {
   return (
     <div style={{ width: "300px" }}>
-      <Input placeholderStatic={"Buscar"} icon={<AiOutlineSearch />} />
+      <Input
+        staticPlaceholder={"Buscar"}
+        icon={<AiOutlineSearch fill="#777" />}
+        iconSize={22}
+        iconPosition="left"
+      />
     </div>
   );
 };
