@@ -2,6 +2,9 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import styles from "../styles/Navbar.module.css";
 import { UserDropdown } from "./UserDropdown";
+import { FaShoppingCart } from "react-icons/fa";
+import { AiOutlineBars } from "react-icons/ai";
+import { Search } from "./Search";
 
 export const Navbar = () => {
   const { isLoggedIn } = useAuth();
@@ -12,11 +15,24 @@ export const Navbar = () => {
           <Link to="/">Logo</Link>
         </div>
 
-        <div className={styles.searchProductBox}>Buscador</div>
+        <div className={styles.searchProductBox}>
+          <Search />
+        </div>
 
         <div className={styles.options}>
           <ul className={styles.ul}>
-            <li>
+            <Link to="/categorias">
+              <li className={`${styles.li} ${styles.liNav}`}>
+                <AiOutlineBars size={20} className={styles.liIcon} />
+                <span>Categorías</span>
+              </li>
+            </Link>
+
+            <li className={`${styles.li} ${styles.liNav}`}>
+              <FaShoppingCart size={20} className={styles.liIcon} />
+              <span>Mi carrito</span>
+            </li>
+            <li className={styles.li}>
               {isLoggedIn ? (
                 <UserDropdown />
               ) : (

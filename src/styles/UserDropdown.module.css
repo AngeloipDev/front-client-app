@@ -5,8 +5,8 @@
 
 .action .profile {
   position: relative;
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
   border-radius: 50%;
   overflow: hidden;
   cursor: pointer;
@@ -38,20 +38,6 @@
   visibility: visible;
   opacity: 1;
 }
-
-/* .action .menu::before {
-  content: "";
-  position: absolute;
-  top: -5px;
-  right: 8px;
-
-  transform: translate(-50%, 0);
-  width: 30px;
-  height: 30px;
-  background: #fff;
-  transform: rotate(45deg);
-}
- */
 .action .menu h3 {
   width: 100%;
   text-align: center;

@@ -9,7 +9,8 @@ export const Input = ({
   onClick,
   icon,
   text,
-  disabled
+  disabled,
+  placeholderStatic
 }) => {
   return (
     <div className={styles.cont_input}>
@@ -20,7 +21,7 @@ export const Input = ({
         onChange={onChange}
         value={value}
         autoComplete="off"
-        placeholder=" "
+        placeholder={placeholderStatic ? placeholderStatic : " "}
         className={styles.form__input}
         disabled={disabled}
       />
@@ -29,9 +30,11 @@ export const Input = ({
         {icon}
       </span>
 
-      <label className={styles.form__label} htmlFor={id}>
-        {text}
-      </label>
+      {!placeholderStatic && (
+        <label className={styles.form__label} htmlFor={id}>
+          {text}
+        </label>
+      )}
     </div>
   );
 };
