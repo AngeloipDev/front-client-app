@@ -20,6 +20,7 @@
 body {
   font-family: "Roboto", sans-serif;
   background: #e4e9f7;
+  min-width: 320px;
   position: relative;
 }
 #root {
@@ -34,21 +35,19 @@ ul {
 input,
 button {
   font-size: 16px;
+  outline: none;
 }
-.modal-enter .modalContent {
-  opacity: 0;
-  transform: scale(0.5);
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
 }
-.modal-enter-active .modalContent {
-  opacity: 1;
-  transform: translateX(0);
-  transition: all 0.3s ease;
+
+::-webkit-scrollbar-thumb {
+  background-color: rgb(185, 185, 185);
+  border-radius: 10px;
+  height: 200px;
 }
-.modal-exit .modalContent {
-  opacity: 1;
-}
-.modal-exit-active .modalContent {
-  opacity: 0;
-  transform: scale(0.5);
-  transition: all 0.3s ease;
+
+::-webkit-scrollbar-track {
+  background-color: #fff;
 }

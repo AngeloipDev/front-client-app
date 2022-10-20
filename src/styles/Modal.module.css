@@ -5,17 +5,69 @@
   left: 0;
   width: 100%;
   min-height: 100vh;
-  background-color: rgba(0, 0, 0, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: all 0.3s ease;
 }
-.modal_container {
+.modal_content {
   position: relative;
+  max-width: 500px;
+  width: 100%;
   background-color: #fff;
-  min-width: 320px;
-  max-width: 480px;
-  overflow-y: auto;
   border-radius: 8px;
-  padding: 10px;
+  padding: 1rem;
+}
+
+.enter .modalBox {
+  opacity: 0;
+  background-color: transparent;
+  transition: all 0.3s ease;
+}
+.enterActive .modalBox {
+  opacity: 1;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+}
+.enterDone .modalBox {
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+}
+.exit .modalBox {
+  opacity: 1;
+}
+.exitActive .modalBox {
+  opacity: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+}
+
+/************************************************************/
+.enter .modalContent {
+  opacity: 0;
+  transform: scale(0.5);
+  transition: all 0.3s ease;
+}
+.enterActive .modalContent {
+  opacity: 1;
+  transform: translateX(0);
+  transition: all 0.3s ease;
+}
+.enterDone .modalContent {
+  transition: all 0.3s ease;
+}
+.exit .modalContent {
+  opacity: 1;
+}
+.exitActive .modalContent {
+  opacity: 0;
+  transform: scale(0.5);
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 576px) {
+  .modal_content {
+    max-width: 100%;
+    margin: 8px;
+  }
 }

@@ -5,9 +5,8 @@ import { UserDropdown } from "./UserDropdown";
 import { FaShoppingCart } from "react-icons/fa";
 import { AiOutlineBars } from "react-icons/ai";
 import { Search } from "./Search";
-import { Modal } from "./Modal";
 import { useState } from "react";
-import { GrClose } from "react-icons/gr";
+import { CartModal } from "./CartModal";
 
 export const Navbar = () => {
   const [show, setShow] = useState(false);
@@ -31,23 +30,15 @@ export const Navbar = () => {
                 <span>Categorías</span>
               </li>
             </Link>
-            <li>
-              <button onClick={() => setShow(true)}>Modal 1</button>
-              <Modal show={show} onHide={() => setShow(false)}>
-                <div className={styles.modalHeader}>
-                  <span className={styles.modalTitle}>Modal 1</span>
-                  <button onClick={() => setShow(false)}>
-                    <GrClose />
-                  </button>
-                </div>
-                <div className={styles.modalBody}>Este es mi modal 1</div>
-              </Modal>
-            </li>
 
-            <li className={`${styles.li} ${styles.liNav}`}>
+            <li
+              className={`${styles.li} ${styles.liNav}`}
+              onClick={() => setShow(true)}
+            >
               <FaShoppingCart size={20} className={styles.liIcon} />
               <span>Mi carrito</span>
             </li>
+            <CartModal show={show} setShow={setShow} />
             <li className={styles.li}>
               {isLoggedIn ? (
                 <UserDropdown />

@@ -16,10 +16,12 @@ export const Modal = ({ children, show, onHide }) => {
   useEffect(() => {
     if (show) {
       document.body.appendChild(containerEl);
+      document.body.style.overflow = "hidden";
     }
     if (document.body.contains(containerEl) && !show) {
       setTimeout(() => {
         document.body.removeChild(containerEl);
+        document.body.style.overflow = "visible";
       }, 400);
     }
   }, [show]);
@@ -29,19 +31,29 @@ export const Modal = ({ children, show, onHide }) => {
       nodeRef={nodeRef}
       in={show}
       timeout={300}
-      classNames="modal"
+      classNames={{
+        enter: styles.enter,
+        enterActive: styles.enterActive,
+        exit: styles.exit,
+        exitActive: styles.exitActive,
+        appear: styles.appear,
+        appearActive: styles.appearActive,
+        enterDone: styles.enterDone,
+        exitDone: styles.exitDone
+      }}
       unmountOnExit
     >
-      <div
-        className={`${styles.modalContainer}`}
-        onClick={onHide}
-        ref={nodeRef}
-      >
+      <div ref={nodeRef}>
         <div
-          className={`${styles.modal_container} modalContent`}
-          onClick={handlePropagation}
+          className={`${styles.modalContainer} ${styles.modalBox}`}
+          onClick={onHide}
         >
-          <div>{children}</div>
+          <div
+            className={`${styles.modal_content} ${styles.modalContent}`}
+            onClick={handlePropagation}
+          >
+            <div>{children}</div>
+          </div>
         </div>
       </div>
     </CSSTransition>,
