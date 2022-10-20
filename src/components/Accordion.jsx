@@ -2,7 +2,13 @@ import styles from "../styles/Accordion.module.css";
 import { MdOutlineExpandMore } from "react-icons/md";
 import { useState, useRef } from "react";
 
-export const Accordion = ({ nameCategory, setNameCategory, isLoading }) => {
+export const Accordion = ({
+  elementName,
+  setElementName,
+  isLoading,
+  text,
+  array
+}) => {
   const [isOpen, setIsOpen] = useState(true);
   const content = useRef(null);
 
@@ -11,14 +17,16 @@ export const Accordion = ({ nameCategory, setNameCategory, isLoading }) => {
   };
 
   const handleChange = (event) => {
-    setNameCategory(event.target.value);
+    setElementName(event.target.value);
   };
 
   return (
     <div className={styles.accordion}>
       <div className={styles.item}>
         <div className={styles.title} onClick={handleOpen}>
-          <h2>Categorías ({["Do", "Re", "Mi", "Fa", "Sol"].length})</h2>
+          <h2>
+            {text} ({array.length})
+          </h2>
           <span>
             <MdOutlineExpandMore
               size={20}
@@ -34,7 +42,9 @@ export const Accordion = ({ nameCategory, setNameCategory, isLoading }) => {
         <div
           ref={content}
           style={{
-            maxHeight: isOpen ? `450px` : "0px"
+            maxHeight: isOpen
+              ? `${(array.length + 1) * 30 + array.length * 15 + 20}px`
+              : "0px"
           }}
           className={
             isOpen ? `${styles.content} ${styles.active}` : `${styles.content}`
@@ -42,26 +52,26 @@ export const Accordion = ({ nameCategory, setNameCategory, isLoading }) => {
         >
           <div>
             <div className={styles.radio_group}>
-              <label className={styles.radio}>
+              {/*  <label className={styles.radio}>
                 <input
                   type="radio"
-                  name="category"
+                  name={text}
                   value="Todo"
                   onChange={handleChange}
-                  checked={nameCategory === "Todo" ? true : false}
-                  /*disabled={isLoading} */
+                  checked={elementName === "Todo" ? true : false}
                 />
                 <span className={styles.inputValue}>Todo</span>
                 <span className={styles.inputRadio}></span>
-              </label>
-              {["Do", "Re", "Mi", "Fa", "Sol"].map((category, index) => (
+              </label> */}
+
+              {array.map((category, index) => (
                 <label className={styles.radio} key={index}>
                   <input
                     type="radio"
-                    name="category"
+                    name={text}
                     value={category}
                     onChange={handleChange}
-                    checked={nameCategory === category ? true : false}
+                    checked={elementName === category ? true : false}
                     /* disabled={isLoading} */
                   />
                   <span className={styles.inputValue}>{category}</span>

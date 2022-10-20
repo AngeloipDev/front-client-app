@@ -20,6 +20,14 @@
 body {
   font-family: "Roboto", sans-serif;
   background: #e4e9f7;
+  position: relative;
+  z-index: 10;
+}
+#root {
+  position: relative;
+}
+#root > * {
+  z-index: 1;
 }
 a {
   text-decoration: none;

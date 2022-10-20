@@ -12,7 +12,8 @@ export const Input = ({
   text,
   disabled,
   staticPlaceholder,
-  iconPosition = "right"
+  iconPosition = "right",
+  paddingtb
 }) => {
   const positon =
     iconPosition === "left"
@@ -33,7 +34,9 @@ export const Input = ({
         disabled={disabled}
         style={{
           paddingRight: icon && iconPosition === "right" && "32px",
-          paddingLeft: icon && iconPosition === "left" && "32px"
+          paddingLeft: icon && iconPosition === "left" && "32px",
+          paddingBottom: paddingtb && paddingtb,
+          paddingTop: paddingtb && paddingtb
         }}
       />
 

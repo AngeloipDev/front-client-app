@@ -14,6 +14,7 @@ import { GoogleLogout } from "react-google-login";
 export const UserDropdown = () => {
   const ref = useRef();
   const [activeDrop, setActiveDrop] = useState(false);
+  const [open, setOpen] = useState(false);
   const { dispatch, user } = useAuth();
 
   const classMenu = activeDrop
@@ -65,6 +66,7 @@ export const UserDropdown = () => {
             <HiOutlineUserCircle className={styles.icon} />
             <Link>My Profile</Link>
           </li>
+
           <li>
             <FaRegEdit className={styles.icon} />
             <Link>Edit Profile</Link>

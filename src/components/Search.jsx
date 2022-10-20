@@ -9,6 +9,7 @@ export const Search = () => {
         icon={<AiOutlineSearch fill="#777" />}
         iconSize={22}
         iconPosition="left"
+        paddingtb={8}
       />
     </div>
   );

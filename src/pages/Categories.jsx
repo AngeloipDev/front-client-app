@@ -4,20 +4,37 @@ import { ProductCardSkeleton } from "../helpers/SkeletonMolds";
 import styles from "../styles/Categories.module.css";
 
 export const Categories = () => {
-  const [nameCategory, setNameCategory] = useState("Todo");
+  const categoryArray = ["Do", "Re", "Mi", "Fa", "Sol"];
+  const subcategoryArray = ["Do", "Re", "Mi"];
+  const [categoryName, setCategoryName] = useState(categoryArray[0]);
+  const [subcategoryName, setSubcategoryName] = useState(subcategoryArray[0]);
 
   return (
     <div className={styles.categoriesBox}>
       <figure className={styles.figureCategorie}>
-        <h2>{nameCategory}</h2>
+        <h2>{categoryName}</h2>
       </figure>
       <div className={styles.categoriesContainer}>
         <div className={styles.subCategoriesContainer}>
           <div className={styles.categoryFilters}>
             <h2 className={styles.boxTittle}>Filtros</h2>
             <Accordion
-              nameCategory={nameCategory}
-              setNameCategory={setNameCategory}
+              elementName={categoryName}
+              setElementName={setCategoryName}
+              array={categoryArray}
+              text={"Categorías"}
+            />
+            <div
+              style={{
+                height: "1px",
+                borderBottom: "1px solid #cfcfcf"
+              }}
+            ></div>
+            <Accordion
+              elementName={subcategoryName}
+              setElementName={setSubcategoryName}
+              array={subcategoryArray}
+              text={"Subcategorías"}
             />
           </div>
 

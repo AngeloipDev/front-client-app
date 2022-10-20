@@ -5,6 +5,7 @@ import { UserDropdown } from "./UserDropdown";
 import { FaShoppingCart } from "react-icons/fa";
 import { AiOutlineBars } from "react-icons/ai";
 import { Search } from "./Search";
+import { Modal } from "./Modal";
 
 export const Navbar = () => {
   const { isLoggedIn } = useAuth();
@@ -27,6 +28,9 @@ export const Navbar = () => {
                 <span>Categorías</span>
               </li>
             </Link>
+            <li>
+              <Modal />
+            </li>
 
             <li className={`${styles.li} ${styles.liNav}`}>
               <FaShoppingCart size={20} className={styles.liIcon} />
