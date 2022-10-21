@@ -24,15 +24,13 @@
 
 .formulario .btnSubmitForm,
 .formulario .btnForm {
-  font-weight: bold;
   border: none;
   cursor: pointer;
   border-radius: 5px;
-  color: #fff;
-
   transition: 0.3s ease all;
 }
 .btnSubmitForm {
+  color: #fff;
   width: 100%;
   padding: 10px;
   background: var(--btn-color);
@@ -42,9 +40,10 @@
 
 .formulario .buttonForgotPass {
   color: #16a2ff;
+  font-weight: 500;
 }
 .forgotPassword {
-  margin-top: 10px;
+  margin: 10px 0;
 }
 
 .orP {
@@ -99,14 +98,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-}
-.link_register span {
-  margin-right: 5px;
+  gap: 5px;
 }
 
 .btnForm.buttonIsRegister {
   background: none;
   color: #16a2ff;
+  font-weight: 500;
 }
 
 .backBtn {

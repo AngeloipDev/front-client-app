@@ -37,6 +37,7 @@ export const Navbar = () => {
             >
               <FaShoppingCart size={20} className={styles.liIcon} />
               <span>Mi carrito</span>
+              <span className={styles.item__total}>9+</span>
             </li>
             <CartModal show={show} setShow={setShow} />
             <li className={styles.li}>

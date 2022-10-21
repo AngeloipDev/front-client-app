@@ -185,8 +185,9 @@ export const Login = () => {
                 onChange={handleChange}
               />
             </div>
-            <div style={{ marginBottom: "15px" }}>
-              {isRegister && (
+
+            {isRegister && (
+              <div style={{ marginBottom: "15px" }}>
                 <Input
                   type={visible ? "text" : "password"}
                   text="Confirmar Contraseña"
@@ -194,7 +195,16 @@ export const Login = () => {
                   onClick={handleVisible}
                   onChange={handleChange}
                 />
-              )}
+              </div>
+            )}
+
+            <div className={styles.forgotPassword}>
+              <Link
+                to="/forgot-password"
+                className={`${styles.btnForm} ${styles.buttonForgotPass}`}
+              >
+                ¿Olvidaste tu contraseña?
+              </Link>
             </div>
 
             <button type="submit" className={styles.btnSubmitForm}>
@@ -206,14 +216,6 @@ export const Login = () => {
                 ? "Registrarse"
                 : "Iniciar Sesión"}
             </button>
-            <div className={styles.forgotPassword}>
-              <Link
-                to="/forgot-password"
-                className={`${styles.btnForm} ${styles.buttonForgotPass}`}
-              >
-                ¿Olvidaste tu contraseña?
-              </Link>
-            </div>
 
             <p className={styles.orP}>
               <span className={styles.orSpan}>O</span>
@@ -244,13 +246,12 @@ export const Login = () => {
                   ? "¿Ya tienes una cuenta?"
                   : "¿Aún no tienes una cuenta?"}
               </span>
-              <button
-                type="button"
+              <span
                 className={`${styles.btnForm} ${styles.buttonIsRegister}`}
                 onClick={handleRegister}
               >
                 {isRegister ? "Iniciar Sesión" : "Registrarse"}
-              </button>
+              </span>
             </div>
           </form>
         </div>

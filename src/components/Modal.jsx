@@ -1,4 +1,3 @@
-/* import styles from "../styles/Modal.module.css"; */
 import styles from "../styles/Modal.module.css";
 import { createPortal } from "react-dom";
 import { useEffect, useRef, useState } from "react";
@@ -21,7 +20,7 @@ export const Modal = ({ children, show, onHide }) => {
     if (document.body.contains(containerEl) && !show) {
       setTimeout(() => {
         document.body.removeChild(containerEl);
-        document.body.style.overflow = "visible";
+        document.body.style.overflow = "";
       }, 400);
     }
   }, [show]);

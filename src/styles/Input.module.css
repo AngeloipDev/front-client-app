@@ -10,7 +10,7 @@
   border: 2px solid #e2e2e2;
   padding: 12px 20px;
   color: #1f1f1f;
-  transition: 0.2s;
+  transition: 0.3s;
 }
 .form__input:hover,
 .form__input.form__area:hover {
