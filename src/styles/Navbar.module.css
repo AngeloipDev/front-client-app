@@ -43,6 +43,7 @@
   cursor: pointer;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
 }
 .li.liNav {
@@ -64,10 +65,39 @@
 .li.liNav:hover .liIcon {
   color: var(--btn-color);
 }
+.cartContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.cartContent.animation {
+  animation: efect 1s ease-in-out 1;
+}
+@keyframes efect {
+  17% {
+    transform: translateY(6px);
+  }
+  34% {
+    transform: translateY(-4px);
+  }
+  50% {
+    transform: translateY(3px);
+  }
+  67% {
+    transform: translateY(-2px);
+  }
+  84% {
+    transform: translateY(1px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
 .item__total {
   position: absolute;
-  top: -5px;
-  left: 14px;
+  top: -10px;
+  left: 9px;
   width: 1.2rem;
   height: 1.2rem;
   border-radius: 50%;

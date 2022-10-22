@@ -5,12 +5,20 @@ import { UserDropdown } from "./UserDropdown";
 import { FaShoppingCart } from "react-icons/fa";
 import { AiOutlineBars } from "react-icons/ai";
 import { Search } from "./Search";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { CartModal } from "./CartModal";
 
 export const Navbar = () => {
   const [show, setShow] = useState(false);
   const { isLoggedIn } = useAuth();
+  const ref = useRef("");
+
+  const handleAnimation = () => {
+    ref.current.className = `${styles.cartContent} ${styles.animation}`;
+    setTimeout(() => {
+      ref.current.className = `${styles.cartContent}`;
+    }, 1000);
+  };
   return (
     <nav className={styles.navbarContainer}>
       <div className={styles.subNavbarContainer}>
@@ -35,9 +43,14 @@ export const Navbar = () => {
               className={`${styles.li} ${styles.liNav}`}
               onClick={() => setShow(true)}
             >
-              <FaShoppingCart size={20} className={styles.liIcon} />
+              <span ref={ref} className={styles.cartContent}>
+                <FaShoppingCart size={20} className={styles.liIcon} />
+                <span className={styles.item__total}>9+</span>
+              </span>
               <span>Mi carrito</span>
-              <span className={styles.item__total}>9+</span>
+            </li>
+            <li>
+              <button onClick={handleAnimation}>Test</button>
             </li>
             <CartModal show={show} setShow={setShow} />
             <li className={styles.li}>
