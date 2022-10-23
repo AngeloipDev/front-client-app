@@ -7,9 +7,11 @@ import { AiOutlineBars } from "react-icons/ai";
 import { Search } from "./Search";
 import { useRef, useState } from "react";
 import { CartModal } from "./CartModal";
+import { LoginModal } from "./LoginModal";
 
 export const Navbar = () => {
   const [show, setShow] = useState(false);
+  const [showLogin, setShowLogin] = useState(false);
   const { isLoggedIn } = useAuth();
   const ref = useRef("");
 
@@ -50,7 +52,8 @@ export const Navbar = () => {
               <span>Mi carrito</span>
             </li>
             <li>
-              <button onClick={handleAnimation}>Test</button>
+              <button onClick={() => setShowLogin(true)}>LOGIN</button>
+              <LoginModal show={showLogin} setShow={setShowLogin} />
             </li>
             <CartModal show={show} setShow={setShow} />
             <li className={styles.li}>

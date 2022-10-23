@@ -21,7 +21,7 @@ export const Modal = ({ children, show, onHide }) => {
       setTimeout(() => {
         document.body.removeChild(containerEl);
         document.body.style.overflow = "";
-      }, 400);
+      }, 300);
     }
   }, [show]);
 

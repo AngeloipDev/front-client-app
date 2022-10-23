@@ -14,7 +14,6 @@ import { GoogleLogout } from "react-google-login";
 export const UserDropdown = () => {
   const ref = useRef();
   const [activeDrop, setActiveDrop] = useState(false);
-  const [open, setOpen] = useState(false);
   const { dispatch, user } = useAuth();
 
   const classMenu = activeDrop

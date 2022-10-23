@@ -1,16 +1,16 @@
 .productoCardContainer {
   background: #fff;
-  border-radius: 5px;
+  border-radius: 0.3125rem;
 }
 
 .subproductoCardContainer {
-  padding: 15px;
+  padding: 0.9375rem;
   position: relative;
 }
 
 .imgProductoCard {
-  max-width: 192px;
-  height: 150px;
+  max-width: 12rem;
+  height: 9.375rem;
   margin: 0 auto;
   background: #fff;
   padding: 2% 7.5% 7.5% 7.5%;
@@ -19,75 +19,63 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 5px;
+  border-radius: 0.3125rem;
 }
 
 .nameBox {
-  height: 38px;
+  height: 2.375rem;
   overflow: hidden;
   line-height: normal;
 }
 .productName {
   color: #737373;
-  font-size: 16px;
+  font-size: 1rem;
+}
+.productPrice {
+  margin: 0.875rem 0;
+}
+.productPrice span {
+  color: #262626;
 }
 .productCategory {
   color: #b2b2b2;
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 500;
-  margin-top: 5px;
-  margin-bottom: 10px;
+  margin-top: 0.3125rem;
+  margin-bottom: 0.625rem;
 }
 
-.favoriteBtn {
+.addCartBtn {
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   outline: none;
-  background: none;
-  border: 1px solid #dd4b39;
-  padding: 8px 10px;
-  border-radius: 5px;
+  background: var(--btn-color);
+  border: none;
+  padding: 0.5rem 0.625rem;
+  border-radius: 0.3125rem;
   margin: auto;
-  gap: 5px;
-  transition: 0.3s;
-  font-size: 14px;
+  gap: 0.3125rem;
+  transition: all 0.3s ease;
+  font-size: 0.875rem;
   width: 100%;
+  color: #fff;
+  font-weight: 700;
 }
 
-.favoriteBtn:hover {
-  background-color: #f8e6e5;
-}
-
-.favoriteBtn span {
-  color: #dd4b39;
-  font-weight: bold;
-}
-
-.iconHeart {
-  color: #dd4b39;
-  font-weight: bold;
+.addCartBtn:hover {
+  background-color: var(--btn-hover-color);
 }
 
 .detailsBox {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 15px;
+  margin-top: 0.9375rem;
 }
 
 .detailsLink {
   text-decoration: none;
   color: #0085ff;
-}
-
-.spinner {
-  color: #dd4b39;
-  animation: spinner 1s linear infinite;
-}
-@keyframes spinner {
-  to {
-    transform: rotate(360deg);
-  }
 }
