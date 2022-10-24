@@ -28,31 +28,34 @@ export const CartProvider = ({ children }) => {
   };
 
   const increaseQuantity = (id) => {
-    cart.forEach((item) => {
+    /* cart.forEach((item) => {
       if (item.id === id) {
         item.quantity += 1;
       }
-    });
-    setCart([...cart]);
-    /* setCart(cart.map(item => item.id === id ? {...item, quantity: item.quantity + 1} : item)) */
+    }); */
+    setCart(
+      cart.map((item) =>
+        item.id === id
+          ? { ...item, quantity: item.quantity + (item.quantity < 10 ? 1 : 0) }
+          : item
+      )
+    );
   };
 
   const decreaseQuantity = (id) => {
-    cart.forEach((item) => {
+    /* cart.forEach((item) => {
       if (item.id === id) {
         item.quantity === 1 ? (item.quantity = 1) : (item.quantity -= 1);
       }
-    });
-    setCart([...cart]);
-    /* setCart(cart.map(item => item.id === id ? {...item, } :{})) */
+    }); */
+    setCart(
+      cart.map((item) =>
+        item.id === id
+          ? { ...item, quantity: item.quantity - (item.quantity === 1 ? 0 : 1) }
+          : item
+      )
+    );
   };
-
-  useEffect(() => {
-    const _cartData = JSON.parse(localStorage.getItem("_cartData"));
-    if (_cartData) {
-      setCart(_cartData);
-    }
-  }, []);
 
   useEffect(() => {
     const getTotalPrice = () => {
@@ -68,6 +71,13 @@ export const CartProvider = ({ children }) => {
   useEffect(() => {
     localStorage.setItem("_cartData", JSON.stringify(cart));
   }, [cart]);
+
+  useEffect(() => {
+    const _cartData = JSON.parse(localStorage.getItem("_cartData"));
+    if (_cartData) {
+      setCart(_cartData);
+    }
+  }, []);
 
   const value = {
     addToCart,
