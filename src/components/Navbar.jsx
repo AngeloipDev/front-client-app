@@ -8,11 +8,13 @@ import { Search } from "./Search";
 import { useRef, useState } from "react";
 import { CartModal } from "./CartModal";
 import { LoginModal } from "./LoginModal";
+import { useCart } from "../context/CartContext";
 
 export const Navbar = () => {
   const [show, setShow] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
   const { isLoggedIn } = useAuth();
+  const { cart } = useCart();
   const ref = useRef("");
 
   const handleAnimation = () => {
@@ -47,7 +49,7 @@ export const Navbar = () => {
             >
               <span ref={ref} className={styles.cartContent}>
                 <FaShoppingCart size={20} className={styles.liIcon} />
-                <span className={styles.item__total}>9+</span>
+                <span className={styles.item__total}>{cart.length}</span>
               </span>
               <span>Mi carrito</span>
             </li>

@@ -1,4 +1,5 @@
-import { createContext, useContext, useEffect } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
+import { Toast } from "../helpers/toast";
 
 export const CartContext = createContext();
 
@@ -11,28 +12,24 @@ export const useCart = () => {
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
   const [total, setTotal] = useState(0);
+  const [isInitiallyFetched, setIsInitiallyFetched] = useState(false);
 
   const addToCart = (product) => {
-    const checked = carrito.find((item) => item.id === product.id);
-    if (checked) {
+    const checked = cart.find((item) => item.id === product.id);
+    if (!checked) {
       setCart([...cart, { ...product, quantity: 1 }]);
     } else {
-      alert("El producto ya se ha agregado");
+      Toast("info", "El producto ya ha sido agregado");
     }
   };
 
   const removeFromCart = (id) => {
-    if (window.confirm("¿Quiere eliminar el producto?")) {
-      setCart(carrito.filter((item) => item.id !== id));
-    }
+    setCart(cart.filter((item) => item.id !== id));
+
+    Toast("success", "Producto eliminado");
   };
 
   const increaseQuantity = (id) => {
-    /* cart.forEach((item) => {
-      if (item.id === id) {
-        item.quantity += 1;
-      }
-    }); */
     setCart(
       cart.map((item) =>
         item.id === id
@@ -43,11 +40,6 @@ export const CartProvider = ({ children }) => {
   };
 
   const decreaseQuantity = (id) => {
-    /* cart.forEach((item) => {
-      if (item.id === id) {
-        item.quantity === 1 ? (item.quantity = 1) : (item.quantity -= 1);
-      }
-    }); */
     setCart(
       cart.map((item) =>
         item.id === id
@@ -69,17 +61,21 @@ export const CartProvider = ({ children }) => {
   }, [cart]);
 
   useEffect(() => {
-    localStorage.setItem("_cartData", JSON.stringify(cart));
-  }, [cart]);
-
-  useEffect(() => {
     const _cartData = JSON.parse(localStorage.getItem("_cartData"));
     if (_cartData) {
       setCart(_cartData);
+      setIsInitiallyFetched(true);
     }
   }, []);
 
+  useEffect(() => {
+    if (isInitiallyFetched) {
+      localStorage.setItem("_cartData", JSON.stringify(cart));
+    }
+  }, [cart]);
+
   const value = {
+    cart,
     addToCart,
     removeFromCart,
     increaseQuantity,

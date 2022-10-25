@@ -3,8 +3,12 @@ import { Modal } from "./Modal";
 import styles from "../styles/CartModal.module.css";
 import { useState } from "react";
 import { TestModal } from "./TestModal";
+import { useCart } from "../context/CartContext";
+import { CartModalItem } from "./CartModalItem";
+import { Link } from "react-router-dom";
 
 export const CartModal = ({ show, setShow }) => {
+  const { cart, total } = useCart();
   const [showTest, setShowTest] = useState(false);
   return (
     <div>
@@ -16,19 +20,24 @@ export const CartModal = ({ show, setShow }) => {
           </button>
         </div>
         <div className={styles.modalBody}>
-          Este es mi modal 1
-          <button
-            onClick={() => {
-              setShow(false);
-              setShowTest(true);
-            }}
-          >
-            MOSTRAR TEST MODAL
-          </button>
+          {cart.map((item, index) => (
+            <div key={index} className={styles.elementBox}>
+              <CartModalItem item={item} />
+            </div>
+          ))}
         </div>
         <div className={styles.modalFooter}>
-          <button>CLOSE</button>
-          <button>SAVE CHANGES</button>
+          <div className={styles.footerBox}>
+            <div className={styles.subTotalPrice}>
+              Subtotal: S/ {total.toFixed(2)}
+            </div>
+            <div className={styles.footerBtn}>
+              <Link className={styles.cartLink} to="/mi-carrito">
+                Ir a mi Carrito
+              </Link>
+              <button className={styles.buyBtn}>Realizar Compra</button>
+            </div>
+          </div>
         </div>
       </Modal>
       <TestModal

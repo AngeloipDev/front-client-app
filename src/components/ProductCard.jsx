@@ -2,8 +2,10 @@ import noImg from "../img/no-image.jpg";
 import { Link } from "react-router-dom";
 import { FaCartPlus } from "react-icons/fa";
 import styles from "../styles/ProductCard.module.css";
+import { useCart } from "../context/CartContext";
 
 export const ProductCard = ({ product }) => {
+  const { addToCart } = useCart();
   return (
     <div className={styles.productoCardContainer}>
       <div className={styles.subproductoCardContainer}>
@@ -26,7 +28,10 @@ export const ProductCard = ({ product }) => {
               <span>S/ {product.price.toFixed(2)}</span>
             </div>
 
-            <button className={styles.addCartBtn}>
+            <button
+              className={styles.addCartBtn}
+              onClick={() => addToCart(product)}
+            >
               <FaCartPlus size={20} /> Agregar al carrito
             </button>
 

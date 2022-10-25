@@ -25,7 +25,53 @@
 }
 .modalBody {
   padding: 0.5rem 0;
+  overflow-y: auto;
+  max-height: 400px;
+}
+.elementBox:first-child {
+  border-bottom: 1px solid #e2e2e2;
+  border-top: 1px solid #e2e2e2;
+}
+.elementBox:not(:first-child) {
+  border-bottom: 1px solid #e2e2e2;
 }
 .modalFooter {
   padding: 1rem 0;
+}
+.footerBox {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.subTotalPrice {
+  text-align: center;
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+.footerBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.cartLink {
+  color: #0085ff;
+  padding: 10px 15px;
+  background-color: #f3f3f3;
+  border-radius: 20px;
+  border: none;
+  font-weight: 700;
+  font-size: 14px;
+}
+.buyBtn {
+  color: #fff;
+  padding: 10px 15px;
+  background-color: var(--btn-color);
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 14px;
 }

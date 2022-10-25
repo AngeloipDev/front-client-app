@@ -11,4 +11,10 @@ export const Toast = (type, msg) => {
   if (type === "error") {
     return toast.error(msg, options);
   }
+  if (type === "info") {
+    return toast.info(msg, options);
+  }
+  if (!type) {
+    return toast(msg, options);
+  }
 };
