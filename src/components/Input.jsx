@@ -33,8 +33,9 @@ export const Input = ({
         className={styles.form__input}
         disabled={disabled}
         style={{
-          paddingRight: icon && iconPosition === "right" && "32px",
-          paddingLeft: icon && iconPosition === "left" && "32px",
+          paddingRight:
+            icon && iconPosition === "right" && `${12 + iconSize}px`,
+          paddingLeft: icon && iconPosition === "left" && `${12 + iconSize}px`,
           paddingBottom: paddingtb && paddingtb,
           paddingTop: paddingtb && paddingtb
         }}
@@ -42,7 +43,7 @@ export const Input = ({
 
       {icon && (
         <span
-          style={{ height: iconSize, fontSize: iconSize }}
+          style={{ fontSize: `${iconSize}px` }}
           className={`${styles.icon} ${positon}`}
           onClick={onClick}
         >

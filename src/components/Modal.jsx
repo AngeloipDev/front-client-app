@@ -1,15 +1,15 @@
 import styles from "../styles/Modal.module.css";
 import { createPortal } from "react-dom";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import { CSSTransition } from "react-transition-group";
 
-export const Modal = ({ children, show, onHide }) => {
+export const Modal = ({ children, show, onHide, maxWidth = "500px" }) => {
   const nodeRef = useRef(null);
-  const [containerEl] = useState(() => {
+  const containerEl = useMemo(() => {
     const newDiv = document.createElement("div");
     newDiv.setAttribute("id", "modal");
     return newDiv;
-  });
+  }, []);
   const handlePropagation = (e) => e.stopPropagation();
 
   useEffect(() => {
@@ -20,7 +20,7 @@ export const Modal = ({ children, show, onHide }) => {
     if (document.body.contains(containerEl) && !show) {
       setTimeout(() => {
         document.body.removeChild(containerEl);
-        document.body.style.overflow = "";
+        document.body.style.overflow = "auto";
       }, 300);
     }
   }, [show]);
@@ -48,6 +48,7 @@ export const Modal = ({ children, show, onHide }) => {
           onClick={onHide}
         >
           <div
+            style={{ maxWidth: maxWidth }}
             className={`${styles.modal_content} ${styles.modalContent}`}
             onClick={handlePropagation}
           >

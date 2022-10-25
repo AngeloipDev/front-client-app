@@ -73,7 +73,7 @@ export const ForgotPassword = () => {
           <div className={styles.forgotPassword}>
             <Link
               to="/login"
-              className={`${styles.btnForm} ${styles.buttonForgotPass} ${styles.backBtn}`}
+              className={`${styles.btnForm} ${styles.backBtn}`}
               onClick={handleReset}
             >
               <BiLeftArrowAlt size={25} />

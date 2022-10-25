@@ -12,7 +12,7 @@ export const CartModal = ({ show, setShow }) => {
   const [showTest, setShowTest] = useState(false);
   return (
     <div>
-      <Modal show={show} onHide={() => setShow(false)}>
+      <Modal show={show} onHide={() => setShow(false)} maxWidth={"450px"}>
         <div className={styles.modalHeader}>
           <span className={styles.modalTitle}>Mi Carrito</span>
           <button onClick={() => setShow(false)}>

@@ -47,12 +47,15 @@
   color: #000;
   cursor: pointer;
   user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .icon.leftPosition {
   top: 50%;
-  left: 10px;
+  left: 8px;
 }
 .icon.rightPosition {
   top: 50%;
-  right: 10px;
+  right: 8px;
 }

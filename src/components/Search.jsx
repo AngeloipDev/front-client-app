@@ -7,7 +7,6 @@ export const Search = () => {
       <Input
         staticPlaceholder={"Buscar"}
         icon={<AiOutlineSearch fill="#777" />}
-        iconSize={22}
         iconPosition="left"
         paddingtb={8}
       />

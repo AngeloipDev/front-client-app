@@ -58,7 +58,7 @@ export const UserDropdown = () => {
         <h3>
           {user.name}
           <br />
-          <span>Website Designer</span>
+          <span>{user.email}</span>
         </h3>
         <ul>
           <li>

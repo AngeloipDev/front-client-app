@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import styles from "../styles/Navbar.module.css";
 import { UserDropdown } from "./UserDropdown";
-import { FaShoppingCart } from "react-icons/fa";
+import { FaShoppingCart, FaUser } from "react-icons/fa";
 import { AiOutlineBars } from "react-icons/ai";
 import { Search } from "./Search";
 import { useRef, useState } from "react";
@@ -53,20 +53,24 @@ export const Navbar = () => {
               </span>
               <span>Mi carrito</span>
             </li>
-            <li>
-              <button onClick={() => setShowLogin(true)}>LOGIN</button>
-              <LoginModal show={showLogin} setShow={setShowLogin} />
-            </li>
             <CartModal show={show} setShow={setShow} />
-            <li className={styles.li}>
-              {isLoggedIn ? (
+
+            {isLoggedIn ? (
+              <li className={styles.li}>
                 <UserDropdown />
-              ) : (
-                <Link to="/login" className={styles.loginBtn}>
-                  Iniciar Sesión
-                </Link>
-              )}
-            </li>
+              </li>
+            ) : (
+              <>
+                <li
+                  className={`${styles.li} ${styles.liNav}`}
+                  onClick={() => setShowLogin(true)}
+                >
+                  <FaUser size={20} className={styles.liIcon} />
+                  <span>Iniciar Sesión</span>
+                </li>
+                <LoginModal show={showLogin} setShow={setShowLogin} />
+              </>
+            )}
           </ul>
         </div>
       </div>

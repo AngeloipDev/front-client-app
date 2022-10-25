@@ -41,6 +41,7 @@
 .formulario .buttonForgotPass {
   color: #16a2ff;
   font-weight: 500;
+  font-size: 14px;
 }
 .forgotPassword {
   margin: 10px 0;
@@ -110,6 +111,8 @@
 .backBtn {
   display: flex;
   align-items: center;
+  color: #16a2ff;
+  font-weight: 500;
 }
 
 @media (max-width: 430px) {

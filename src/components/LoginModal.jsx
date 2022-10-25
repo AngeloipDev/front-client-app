@@ -149,7 +149,7 @@ export const LoginModal = ({ show, setShow }) => {
 
   return (
     <>
-      <Modal show={show} onHide={() => setShow(false)}>
+      <Modal show={show} onHide={() => setShow(false)} maxWidth={"400px"}>
         <div className={styles.loginModalContainer}>
           <div className={styles.modalHeader}>
             <span className={styles.modalTitle}>

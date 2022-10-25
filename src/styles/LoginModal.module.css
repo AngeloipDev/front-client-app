@@ -58,6 +58,7 @@
 .formulario .buttonForgotPass {
   color: #16a2ff;
   font-weight: 500;
+  font-size: 14px;
 }
 .forgotPassword {
   margin: 10px 0;
