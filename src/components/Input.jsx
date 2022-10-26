@@ -6,6 +6,8 @@ export const Input = ({
   id,
   onChange,
   value,
+  onFocus,
+  onBlur,
   onClick,
   icon,
   iconSize = 20,
@@ -28,6 +30,8 @@ export const Input = ({
         id={id}
         onChange={onChange}
         value={value}
+        onFocus={onFocus}
+        onBlur={onBlur}
         autoComplete="off"
         placeholder={staticPlaceholder ? staticPlaceholder : " "}
         className={styles.form__input}

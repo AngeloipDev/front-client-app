@@ -54,6 +54,9 @@
   color: #000;
   position: relative;
 }
+.li.liNav.liSearch {
+  display: none;
+}
 .li.liNav:hover {
   background-color: #f0f0f0;
   color: var(--btn-color);
@@ -119,4 +122,18 @@
   color: #fff;
   border-radius: 5px;
   font-weight: 500;
+}
+
+@media (max-width: 1000px) {
+  .li.liNav .liName {
+    display: none;
+  }
+}
+@media (max-width: 800px) {
+  /* .searchProductBox {
+    display: none;
+  } */
+  .li.liNav.liSearch {
+    display: flex;
+  }
 }

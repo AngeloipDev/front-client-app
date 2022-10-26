@@ -3,9 +3,9 @@ import { useAuth } from "../context/AuthContext";
 import styles from "../styles/Navbar.module.css";
 import { UserDropdown } from "./UserDropdown";
 import { FaShoppingCart, FaUser } from "react-icons/fa";
-import { AiOutlineBars } from "react-icons/ai";
+import { AiOutlineBars, AiOutlineSearch } from "react-icons/ai";
 import { Search } from "./Search";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { CartModal } from "./CartModal";
 import { LoginModal } from "./LoginModal";
 import { useCart } from "../context/CartContext";
@@ -13,6 +13,7 @@ import { useCart } from "../context/CartContext";
 export const Navbar = () => {
   const [show, setShow] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
+  const [width, setWidth] = useState(window.innerWidth);
   const { isLoggedIn } = useAuth();
   const { cart } = useCart();
   const ref = useRef("");
@@ -23,6 +24,16 @@ export const Navbar = () => {
       ref.current.className = `${styles.cartContent}`;
     }, 1000);
   };
+
+  useEffect(() => {
+    function handleResize() {
+      setWidth(window.innerWidth);
+    }
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <nav className={styles.navbarContainer}>
       <div className={styles.subNavbarContainer}>
@@ -30,16 +41,21 @@ export const Navbar = () => {
           <Link to="/">Logo</Link>
         </div>
 
-        <div className={styles.searchProductBox}>
-          <Search />
-        </div>
+        {width > 800 && (
+          <div className={`${styles.searchProductBox}`} style={{ flexGrow: 1 }}>
+            <Search />
+          </div>
+        )}
 
         <div className={styles.options}>
           <ul className={styles.ul}>
+            <li className={`${styles.li} ${styles.liNav} ${styles.liSearch}`}>
+              <AiOutlineSearch size={20} className={styles.liIcon} />
+            </li>
             <Link to="/categorias">
               <li className={`${styles.li} ${styles.liNav}`}>
                 <AiOutlineBars size={20} className={styles.liIcon} />
-                <span>Categorías</span>
+                <span className={styles.liName}>Categorías</span>
               </li>
             </Link>
 
@@ -51,7 +67,6 @@ export const Navbar = () => {
                 <FaShoppingCart size={20} className={styles.liIcon} />
                 <span className={styles.item__total}>{cart.length}</span>
               </span>
-              <span>Mi carrito</span>
             </li>
             <CartModal show={show} setShow={setShow} />
 
@@ -66,7 +81,7 @@ export const Navbar = () => {
                   onClick={() => setShowLogin(true)}
                 >
                   <FaUser size={20} className={styles.liIcon} />
-                  <span>Iniciar Sesión</span>
+                  <span className={styles.liName}>Iniciar Sesión</span>
                 </li>
                 <LoginModal show={showLogin} setShow={setShowLogin} />
               </>

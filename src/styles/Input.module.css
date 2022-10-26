@@ -1,5 +1,6 @@
 .cont_input {
   position: relative;
+  width: 100%;
 }
 .form__input,
 .form__input.form__area {
