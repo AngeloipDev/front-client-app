@@ -1,5 +1,11 @@
 import axios from "axios";
-import { createContext, useContext, useEffect, useReducer } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useReducer,
+  useState
+} from "react";
 import { Toast } from "../helpers/toast";
 import { AuthReducer } from "./AuthReducer";
 
@@ -32,7 +38,9 @@ export const AuthProvider = ({ children }) => {
             dispatch({ type: "GET_TOKEN", payload: res.data.ac_token });
           })
           .catch((err) => {
-            Toast("error", err.response.data.msg);
+            localStorage.removeItem("_appSigning");
+            dispatch({ type: "SIGNOUT" });
+            Toast("info", err.response.data.msg);
           });
       };
       getToken();
