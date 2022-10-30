@@ -1,10 +1,11 @@
-import { Tabs } from "../components/Tabs";
+import { SliderBanner } from "../components/SliderBanner";
 import styles from "../styles/Home.module.css";
 
 export const Home = () => {
   return (
     <div className={styles.homeContainer}>
-      <Tabs />
+      <SliderBanner />
+      <div className={styles.homeContent}></div>
     </div>
   );
 };

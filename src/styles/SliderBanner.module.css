@@ -1,0 +1,87 @@
+.sliderBannerContainer {
+  position: relative;
+}
+.sliderContainer {
+  display: flex;
+}
+.slider {
+  min-width: 100%;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  position: relative;
+}
+figure {
+  width: 100%;
+}
+
+figure img {
+  width: 100%;
+  max-height: 400px;
+  vertical-align: top;
+  object-fit: cover;
+}
+.sliderControls {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.sliderControls .controlBoxPrev,
+.sliderControls .controlBoxNext {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: all;
+  cursor: pointer;
+  height: 100%;
+  width: 10%;
+  background-color: transparent;
+}
+.sliderControls .controlBoxPrev {
+  left: 0;
+}
+.sliderControls .controlBoxNext {
+  right: 0;
+}
+.controlBtnPrev,
+.controlBtnNext {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  border: none;
+  outline: none;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  background: none;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.7);
+}
+.controlBoxPrev:hover .controlBtnPrev {
+  color: #fff;
+}
+.controlBoxNext:hover .controlBtnNext {
+  color: #fff;
+}
+.navigation {
+  position: absolute;
+  display: flex;
+  gap: 8px;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.navigation .btn {
+  background: rgba(255, 255, 255, 0.5);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.navigation .btn.active {
+  background: #2696e9;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+}

@@ -1,8 +1,11 @@
 .homeContainer {
-  padding-top: var(--padding-top-container);
-  padding-left: var(--padding-left-container);
-  padding-right: var(--padding-right-container);
+  padding-top: 60px;
   margin: auto;
   width: 100%;
+  overflow: hidden;
+}
+.homeContent {
+  padding-left: var(--padding-left-container);
+  padding-right: var(--padding-right-container);
   max-width: var(--max-width-container);
 }
