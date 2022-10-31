@@ -2,6 +2,7 @@
   box-shadow: 5px 5px 5px rgb(179, 179, 179);
   height: 60px;
   position: fixed;
+  top: 0;
   width: 100%;
   background: #fff;
   z-index: 1;

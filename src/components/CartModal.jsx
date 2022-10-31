@@ -2,16 +2,14 @@ import { GrClose } from "react-icons/gr";
 import { Modal } from "./Modal";
 import styles from "../styles/CartModal.module.css";
 import { useState } from "react";
-import { TestModal } from "./TestModal";
 import { useCart } from "../context/CartContext";
 import { CartModalItem } from "./CartModalItem";
 import { Link } from "react-router-dom";
 
 export const CartModal = ({ show, setShow }) => {
   const { cart, total } = useCart();
-  const [showTest, setShowTest] = useState(false);
   return (
-    <div>
+    <>
       <Modal show={show} onHide={() => setShow(false)} maxWidth={"450px"}>
         <div className={styles.modalHeader}>
           <span className={styles.modalTitle}>Mi Carrito</span>
@@ -40,11 +38,6 @@ export const CartModal = ({ show, setShow }) => {
           </div>
         </div>
       </Modal>
-      <TestModal
-        showTest={showTest}
-        setShowTest={setShowTest}
-        setShow={setShow}
-      />
-    </div>
+    </>
   );
 };

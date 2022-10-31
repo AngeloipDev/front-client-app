@@ -1,13 +1,13 @@
-import styles from "../styles/Modal.module.css";
+import styles from "../styles/OffCanvas.module.css";
 import { createPortal } from "react-dom";
 import { useEffect, useMemo, useRef } from "react";
 import { CSSTransition } from "react-transition-group";
 
-export const Modal = ({ children, show, onHide, maxWidth = "500px" }) => {
+export const OffCanvas = ({ children, show, onHide, maxWidth = "500px" }) => {
   const nodeRef = useRef(null);
   const containerEl = useMemo(() => {
     const newDiv = document.createElement("div");
-    newDiv.setAttribute("id", "modal");
+    newDiv.setAttribute("id", "offcanvas");
     return newDiv;
   }, []);
   const handlePropagation = (e) => e.stopPropagation();
@@ -44,12 +44,12 @@ export const Modal = ({ children, show, onHide, maxWidth = "500px" }) => {
     >
       <div ref={nodeRef}>
         <div
-          className={`${styles.modalContainer} ${styles.modalBox}`}
+          className={`${styles.offcanvasContainer} ${styles.offcanvasBox}`}
           onClick={onHide}
         >
           <div
             style={{ maxWidth: maxWidth }}
-            className={`${styles.modal_content} ${styles.modalContent}`}
+            className={`${styles.offcanvas_content} ${styles.offcanvasContent}`}
             onClick={handlePropagation}
           >
             {children}

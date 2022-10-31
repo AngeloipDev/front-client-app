@@ -268,11 +268,6 @@ export const LoginModal = ({ show, setShow }) => {
           </div>
         </div>
       </Modal>
-      {/* <TestModal
-        showTest={showTest}
-        setShowTest={setShowTest}
-        setShow={setShow}
-      /> */}
     </>
   );
 };

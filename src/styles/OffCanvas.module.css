@@ -1,4 +1,4 @@
-.modalContainer {
+.offcanvasContainer {
   position: fixed;
   z-index: 1000;
   top: 0;
@@ -6,11 +6,10 @@
   width: 100%;
   min-height: 100vh;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: stretch;
   transition: all 0.3s ease;
 }
-.modal_content {
+.offcanvas_content {
   position: relative;
   width: 100%;
   background-color: #fff;
@@ -18,55 +17,54 @@
   padding: 1rem;
 }
 
-.enter .modalBox {
+.enter .offcanvasBox {
   opacity: 0;
   background-color: transparent;
   transition: all 0.3s ease;
 }
-.enterActive .modalBox {
+.enterActive .offcanvasBox {
   opacity: 1;
   background-color: rgba(0, 0, 0, 0.5);
   transition: all 0.3s ease;
 }
-.enterDone .modalBox {
+.enterDone .offcanvasBox {
   background-color: rgba(0, 0, 0, 0.5);
   transition: all 0.3s ease;
 }
-.exit .modalBox {
+.exit .offcanvasBox {
   opacity: 1;
 }
-.exitActive .modalBox {
+.exitActive .offcanvasBox {
   opacity: 0;
   background-color: rgba(0, 0, 0, 0.5);
   transition: all 0.3s ease;
 }
 
 /************************************************************/
-.enter .modalContent {
+.enter .offcanvasContent {
   opacity: 0;
-  transform: scale(0.5);
+  transform: translateX(-100%);
   transition: all 0.3s ease;
 }
-.enterActive .modalContent {
+.enterActive .offcanvasContent {
   opacity: 1;
   transform: translateX(0);
   transition: all 0.3s ease;
 }
-.enterDone .modalContent {
+.enterDone .offcanvasContent {
   transition: all 0.3s ease;
 }
-.exit .modalContent {
+.exit .offcanvasContent {
   opacity: 1;
 }
-.exitActive .modalContent {
+.exitActive .offcanvasContent {
   opacity: 0;
-  transform: scale(0.5);
+  transform: translateX(-100%);
   transition: all 0.3s ease;
 }
 
 @media (max-width: 576px) {
-  .modal_content {
+  .offcanvas_content {
     max-width: 100% !important;
-    margin: 8px;
   }
 }

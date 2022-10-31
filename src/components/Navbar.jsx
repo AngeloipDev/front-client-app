@@ -9,10 +9,12 @@ import { useEffect, useRef, useState } from "react";
 import { CartModal } from "./CartModal";
 import { LoginModal } from "./LoginModal";
 import { useCart } from "../context/CartContext";
+import { OffCanvasSearch } from "./OffCanvasSearch";
 
 export const Navbar = () => {
   const [show, setShow] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
+  const [showCanvas, setShowCanvas] = useState(false);
   const [width, setWidth] = useState(window.innerWidth);
   const { isLoggedIn } = useAuth();
   const { cart } = useCart();
@@ -28,6 +30,9 @@ export const Navbar = () => {
   useEffect(() => {
     function handleResize() {
       setWidth(window.innerWidth);
+      if (window.innerHeight > 800) {
+        setShowCanvas(false);
+      }
     }
 
     window.addEventListener("resize", handleResize);
@@ -49,9 +54,14 @@ export const Navbar = () => {
 
         <div className={styles.options}>
           <ul className={styles.ul}>
-            <li className={`${styles.li} ${styles.liNav} ${styles.liSearch}`}>
+            <li
+              className={`${styles.li} ${styles.liNav} ${styles.liSearch}`}
+              onClick={() => setShowCanvas(true)}
+            >
               <AiOutlineSearch size={20} className={styles.liIcon} />
             </li>
+            <OffCanvasSearch show={showCanvas} setShow={setShowCanvas} />
+
             <Link to="/categorias">
               <li className={`${styles.li} ${styles.liNav}`}>
                 <AiOutlineBars size={20} className={styles.liIcon} />
