@@ -4,6 +4,7 @@ import { ProductCardSkeleton } from "../helpers/SkeletonMolds";
 import { products } from "../Data";
 import styles from "../styles/Categories.module.css";
 import { ProductCard } from "../components/ProductCard";
+import { DoubleRangeSlider } from "../components/DoubleRangeSlider";
 
 export const Categories = () => {
   const categoryArray = ["Do", "Re", "Mi", "Fa", "Sol"];
@@ -31,24 +32,21 @@ export const Categories = () => {
         <div className={styles.subCategoriesContainer}>
           <div className={styles.categoryFilters}>
             <h2 className={styles.boxTittle}>Filtros</h2>
-            <Accordion
-              elementName={categoryName}
-              setElementName={setCategoryName}
-              array={categoryArray}
-              text={"Categorías"}
-            />
             <div
               style={{
-                height: "1px",
                 borderBottom: "1px solid #cfcfcf"
               }}
-            ></div>
-            <Accordion
-              elementName={subcategoryName}
-              setElementName={setSubcategoryName}
-              array={subcategoryArray}
-              text={"Subcategorías"}
-            />
+            >
+              <Accordion
+                elementName={categoryName}
+                setElementName={setCategoryName}
+                array={categoryArray}
+                text={"Categorías"}
+              />
+            </div>
+            <div style={{ padding: "10px 0" }}>
+              <DoubleRangeSlider />
+            </div>
           </div>
 
           <div className={styles.results}>

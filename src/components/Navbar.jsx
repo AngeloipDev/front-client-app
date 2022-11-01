@@ -2,8 +2,9 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import styles from "../styles/Navbar.module.css";
 import { UserDropdown } from "./UserDropdown";
-import { FaShoppingCart, FaUser } from "react-icons/fa";
+import { FaRegUser } from "react-icons/fa";
 import { AiOutlineBars, AiOutlineSearch } from "react-icons/ai";
+import { BsCart3 } from "react-icons/bs";
 import { Search } from "./Search";
 import { useEffect, useRef, useState } from "react";
 import { CartModal } from "./CartModal";
@@ -69,17 +70,6 @@ export const Navbar = () => {
               </li>
             </Link>
 
-            <li
-              className={`${styles.li} ${styles.liNav}`}
-              onClick={() => setShow(true)}
-            >
-              <span ref={ref} className={styles.cartContent}>
-                <FaShoppingCart size={20} className={styles.liIcon} />
-                <span className={styles.item__total}>{cart.length}</span>
-              </span>
-            </li>
-            <CartModal show={show} setShow={setShow} />
-
             {isLoggedIn ? (
               <li className={styles.li}>
                 <UserDropdown />
@@ -90,12 +80,27 @@ export const Navbar = () => {
                   className={`${styles.li} ${styles.liNav}`}
                   onClick={() => setShowLogin(true)}
                 >
-                  <FaUser size={20} className={styles.liIcon} />
+                  <FaRegUser size={20} className={styles.liIcon} />
                   <span className={styles.liName}>Iniciar Sesión</span>
                 </li>
                 <LoginModal show={showLogin} setShow={setShowLogin} />
               </>
             )}
+
+            <li
+              className={`${styles.li} ${styles.liNav}`}
+              onClick={() => setShow(true)}
+            >
+              <span ref={ref} className={styles.cartContent}>
+                <BsCart3
+                  strokeWidth={"0.3"}
+                  size={20}
+                  className={styles.liIcon}
+                />
+                <span className={styles.item__total}>{cart.length}</span>
+              </span>
+            </li>
+            <CartModal show={show} setShow={setShow} />
           </ul>
         </div>
       </div>

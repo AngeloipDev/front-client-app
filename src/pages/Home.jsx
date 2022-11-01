@@ -1,6 +1,7 @@
 import { ImageSlider } from "../components/ImageSlider";
 import styles from "../styles/Home.module.css";
 import { sliders } from "../DataSlider";
+import { DoubleRangeSlider } from "../components/DoubleRangeSlider";
 
 export const Home = () => {
   return (
