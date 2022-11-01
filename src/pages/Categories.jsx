@@ -5,6 +5,7 @@ import { products } from "../Data";
 import styles from "../styles/Categories.module.css";
 import { ProductCard } from "../components/ProductCard";
 import { DoubleRangeSlider } from "../components/DoubleRangeSlider";
+import { Select } from "../components/Select";
 
 export const Categories = () => {
   const categoryArray = ["Do", "Re", "Mi", "Fa", "Sol"];
@@ -13,6 +14,45 @@ export const Categories = () => {
   const [categoryName, setCategoryName] = useState(categoryArray[0]);
   const [subcategoryName, setSubcategoryName] = useState(subcategoryArray[0]);
   const [data, setData] = useState([]);
+
+  const options = [
+    {
+      name: "Automobiles",
+      id: "automobiles"
+    },
+    {
+      name: "Film & Animation",
+      id: "film"
+    },
+    {
+      name: "Science & Technology",
+      id: "science"
+    },
+    {
+      name: "Art",
+      id: "art"
+    },
+    {
+      name: "Music",
+      id: "music"
+    },
+    {
+      name: "Travel & Events",
+      id: "travel"
+    },
+    {
+      name: "Sports",
+      id: "sports"
+    },
+    {
+      name: "News & Politics",
+      id: "news"
+    },
+    {
+      name: "Tutorials",
+      id: "tutorials"
+    }
+  ];
 
   useEffect(() => {
     setIsLoading(true);
@@ -50,6 +90,11 @@ export const Categories = () => {
           </div>
 
           <div className={styles.results}>
+            <div className={styles.sortBy}>
+              <span>Ordenar por: </span>
+              <Select options={options} />
+            </div>
+
             <div className={styles.cardsContent}>
               {isLoading
                 ? [...Array(10)].map((x, i) => <ProductCardSkeleton key={i} />)

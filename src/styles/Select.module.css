@@ -1,0 +1,62 @@
+.selectContainer {
+  color: #333333;
+  border-radius: 8px;
+  outline: none;
+  min-width: 200px;
+}
+.selectBox {
+  position: relative;
+}
+.selected {
+  cursor: pointer;
+  padding: 10px 12px;
+  border: 2px solid #e2e2e2;
+  border-radius: 8px;
+  position: relative;
+}
+.iconExpand {
+  transition: all 0.3s ease;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.iconExpand.active {
+  transform: translateY(-50%) rotate(180deg);
+}
+.selectBox .optionsContainer {
+  position: absolute;
+  width: 100%;
+  background-color: #fff;
+  color: #555;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  border: 2px solid #e2e2e2;
+  margin-top: 8px;
+  z-index: 2;
+}
+
+.selectBox .optionsContainer.active {
+  max-height: 240px;
+  animation: fade 0.3s ease;
+  overflow-y: scroll;
+}
+.selectBox .option {
+  padding: 10px 12px;
+  cursor: pointer;
+  position: relative;
+}
+.selectBox .option:hover {
+  background-color: rgba(0, 0, 0, 0.041);
+}
+@keyframes fade {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

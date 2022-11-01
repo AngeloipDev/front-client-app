@@ -10,7 +10,7 @@ export const CartModal = ({ show, setShow }) => {
   const { cart, total } = useCart();
   return (
     <>
-      <Modal show={show} onHide={() => setShow(false)} maxWidth={"450px"}>
+      <Modal show={show} maxWidth={"450px"}>
         <div className={styles.modalHeader}>
           <span className={styles.modalTitle}>Mi Carrito</span>
           <button onClick={() => setShow(false)}>

@@ -37,6 +37,7 @@ export const LoginModal = ({ show, setShow }) => {
     setIsRegister(!isRegister);
     setForm(initialState);
     ref.current.reset();
+    setVisible(false);
   };
 
   const handleChange = (e) => {
@@ -146,6 +147,15 @@ export const LoginModal = ({ show, setShow }) => {
     };
     gapi.load("client:auth2", start);
   }, []);
+
+  useEffect(() => {
+    return () => {
+      setVisible(false);
+      setIsRegister(false);
+      setIsLoading(false);
+      setForm(initialState);
+    };
+  }, [show]);
 
   return (
     <>

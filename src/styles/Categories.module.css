@@ -65,10 +65,22 @@
   width: 100%;
 }
 
+.sortBy {
+  background-color: #fff;
+  padding: 10px 20px;
+  margin-bottom: 1rem;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
 .cardsContent {
   width: 100%;
   display: grid;
-  gap: 1.3rem;
+  gap: 1rem;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
 }
 .load {
