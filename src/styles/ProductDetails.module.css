@@ -1,0 +1,20 @@
+.productDetailsContainer {
+  padding-top: var(--padding-top-container);
+  padding-left: var(--padding-left-container);
+  padding-right: var(--padding-right-container);
+  width: 100%;
+  max-width: var(--max-width-container);
+  margin: auto;
+}
+
+.subProductDetailsContainer {
+  background: #fff;
+  padding: 40px 20px;
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  justify-content: space-evenly;
+  gap: 30px;
+  flex-wrap: wrap;
+  border-radius: 10px;
+}

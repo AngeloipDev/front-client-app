@@ -9,10 +9,8 @@ import { Select } from "../components/Select";
 
 export const Categories = () => {
   const categoryArray = ["Do", "Re", "Mi", "Fa", "Sol"];
-  const subcategoryArray = ["Do", "Re", "Mi"];
   const [isLoading, setIsLoading] = useState(false);
   const [categoryName, setCategoryName] = useState(categoryArray[0]);
-  const [subcategoryName, setSubcategoryName] = useState(subcategoryArray[0]);
   const [data, setData] = useState([]);
 
   const options = [
@@ -97,7 +95,7 @@ export const Categories = () => {
 
             <div className={styles.cardsContent}>
               {isLoading
-                ? [...Array(10)].map((x, i) => <ProductCardSkeleton key={i} />)
+                ? [...Array(10)].map((_, i) => <ProductCardSkeleton key={i} />)
                 : data.map((product, index) => (
                     <ProductCard key={index} product={product} />
                   ))}

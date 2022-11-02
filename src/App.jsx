@@ -6,6 +6,7 @@ import { Login } from "./pages/Login";
 import { ResetPassword } from "./pages/ResetPassword";
 import { ToastContainer } from "react-toastify";
 import { Categories } from "./pages/Categories";
+import { ProductDetails } from "./pages/ProductDetails";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/categorias" element={<Categories />} />
+        <Route path="/producto/detalles/:id" element={<ProductDetails />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/reset-password/:token" element={<ResetPassword />} />
       </Routes>

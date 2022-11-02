@@ -10,6 +10,7 @@ import axios from "axios";
 import { Toast } from "../helpers/toast";
 import { useAuth } from "../context/AuthContext";
 import { GoogleLogout } from "react-google-login";
+import { ClickOutside } from "../helpers/ClickOutside";
 
 export const UserDropdown = () => {
   const ref = useRef();
@@ -34,16 +35,7 @@ export const UserDropdown = () => {
   };
 
   useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (activeDrop && !ref.current.contains(e.target)) {
-        setActiveDrop(false);
-      }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
+    ClickOutside(activeDrop, setActiveDrop, ref);
   }, [activeDrop]);
 
   return (

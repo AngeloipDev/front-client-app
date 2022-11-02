@@ -15,7 +15,7 @@ export const CartProvider = ({ children }) => {
   const [isInitiallyFetched, setIsInitiallyFetched] = useState(false);
 
   const addToCart = (product) => {
-    const checked = cart.find((item) => item.id === product.id);
+    const checked = cart.find((item) => item._id === product._id);
     if (!checked) {
       setCart([...cart, { ...product, quantity: 1 }]);
     } else {
@@ -24,7 +24,7 @@ export const CartProvider = ({ children }) => {
   };
 
   const removeFromCart = (id) => {
-    setCart(cart.filter((item) => item.id !== id));
+    setCart(cart.filter((item) => item._id !== id));
 
     Toast("success", "Producto eliminado");
   };
@@ -32,7 +32,7 @@ export const CartProvider = ({ children }) => {
   const increaseQuantity = (id) => {
     setCart(
       cart.map((item) =>
-        item.id === id
+        item._id === id
           ? { ...item, quantity: item.quantity + (item.quantity < 10 ? 1 : 0) }
           : item
       )
@@ -42,7 +42,7 @@ export const CartProvider = ({ children }) => {
   const decreaseQuantity = (id) => {
     setCart(
       cart.map((item) =>
-        item.id === id
+        item._id === id
           ? { ...item, quantity: item.quantity - (item.quantity === 1 ? 0 : 1) }
           : item
       )

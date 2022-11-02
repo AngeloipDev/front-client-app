@@ -24,7 +24,7 @@ export const CartModalItem = ({ item }) => {
         </div>
         <button
           className={styles.itemBtn}
-          onClick={() => removeFromCart(item.id)}
+          onClick={() => removeFromCart(item._id)}
         >
           Eliminar
         </button>

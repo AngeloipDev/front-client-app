@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useRef } from "react";
 import { MdOutlineExpandMore } from "react-icons/md";
 import styles from "../styles/Select.module.css";
+import { ClickOutside } from "../helpers/ClickOutside";
 
 export const Select = ({ options = [] }) => {
   const [value, setValue] = useState("-- Seleccionar --");
@@ -16,16 +17,7 @@ export const Select = ({ options = [] }) => {
     setIsOpen(false);
   };
   useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (isOpen && !ref.current.contains(e.target)) {
-        setIsOpen(false);
-      }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
+    ClickOutside(isOpen, setIsOpen, ref);
   }, [isOpen]);
   return (
     <div ref={ref} className={styles.selectContainer}>

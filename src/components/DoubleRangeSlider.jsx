@@ -3,8 +3,8 @@ import styles from "../styles/DoubleRangeSlider.module.css";
 
 export const DoubleRangeSlider = ({
   title = "Precio",
-  initialMin = 250,
-  initialMax = 750,
+  initialMin = 0,
+  initialMax = 1000,
   min = 0,
   max = 1000,
   gap = 100,

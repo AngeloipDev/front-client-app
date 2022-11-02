@@ -3,10 +3,10 @@ import { Input } from "./Input";
 import styles from "../styles/Search.module.css";
 import { useEffect, useState } from "react";
 import { useRef } from "react";
+import { ClickOutside } from "../helpers/ClickOutside";
 
 export const Search = () => {
   const [value, setValue] = useState("");
-  const [isFocus, setIsFocus] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const ref = useRef(null);
 
@@ -15,16 +15,7 @@ export const Search = () => {
   };
 
   useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (isOpen && !ref.current.contains(e.target)) {
-        setIsOpen(false);
-      }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
+    ClickOutside(isOpen, setIsOpen, ref);
   }, [isOpen]);
   return (
     <div
@@ -37,7 +28,7 @@ export const Search = () => {
       }}
     >
       <Input
-        type={"search"}
+        type={"text"}
         staticPlaceholder={"Buscar"}
         icon={<AiOutlineSearch fill="#777" />}
         iconPosition="left"
