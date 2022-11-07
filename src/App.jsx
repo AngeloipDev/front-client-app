@@ -7,11 +7,12 @@ import { ResetPassword } from "./pages/ResetPassword";
 import { ToastContainer } from "react-toastify";
 import { Categories } from "./pages/Categories";
 import { ProductDetails } from "./pages/ProductDetails";
+import { Footer } from "./components/Footer";
 
 function App() {
   return (
     <>
-      <ToastContainer pauseOnFocusLoss={false} />
+      {/* <ToastContainer pauseOnFocusLoss={false} /> */}
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -21,6 +22,7 @@ function App() {
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/reset-password/:token" element={<ResetPassword />} />
       </Routes>
+      <Footer />
     </>
   );
 }

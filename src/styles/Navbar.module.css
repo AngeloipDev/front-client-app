@@ -1,7 +1,7 @@
 .navbarContainer {
   box-shadow: 5px 5px 5px rgb(179, 179, 179);
   height: 60px;
-  position: fixed;
+  position: sticky;
   top: 0;
   width: 100%;
   background: #fff;

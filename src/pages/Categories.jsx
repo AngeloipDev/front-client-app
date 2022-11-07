@@ -6,6 +6,7 @@ import styles from "../styles/Categories.module.css";
 import { ProductCard } from "../components/ProductCard";
 import { DoubleRangeSlider } from "../components/DoubleRangeSlider";
 import { Select } from "../components/Select";
+import { RadioGroup } from "../components/RadioGroup";
 
 export const Categories = () => {
   const categoryArray = ["Do", "Re", "Mi", "Fa", "Sol"];
@@ -52,6 +53,10 @@ export const Categories = () => {
     }
   ];
 
+  const handleCategory = (e) => {
+    setCategoryName(e.target.value);
+  };
+
   useEffect(() => {
     setIsLoading(true);
     setData(products);
@@ -70,18 +75,23 @@ export const Categories = () => {
         <div className={styles.subCategoriesContainer}>
           <div className={styles.categoryFilters}>
             <h2 className={styles.boxTittle}>Filtros</h2>
+
             <div
               style={{
                 borderBottom: "1px solid #cfcfcf"
               }}
             >
-              <Accordion
-                elementName={categoryName}
-                setElementName={setCategoryName}
-                array={categoryArray}
-                text={"Categorías"}
-              />
+              <Accordion title={`Categorías (${categoryArray.length})`}>
+                <RadioGroup
+                  options={categoryArray}
+                  name="Categorías"
+                  defaultValue={categoryArray[0]}
+                  onChange={handleCategory}
+                  value={categoryName}
+                />
+              </Accordion>
             </div>
+
             <div style={{ padding: "10px 0" }}>
               <DoubleRangeSlider />
             </div>
