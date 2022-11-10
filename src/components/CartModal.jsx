@@ -30,7 +30,11 @@ export const CartModal = ({ show, setShow }) => {
               Subtotal: S/ {total.toFixed(2)}
             </div>
             <div className={styles.footerBtn}>
-              <Link className={styles.cartLink} to="/mi-carrito">
+              <Link
+                className={styles.cartLink}
+                to="/mi-carrito"
+                onClick={() => setShow(false)}
+              >
                 Ir a mi Carrito
               </Link>
               <button className={styles.buyBtn}>Realizar Compra</button>

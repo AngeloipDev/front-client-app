@@ -1,26 +1,26 @@
-import { FaMinus, FaPlus } from "react-icons/fa";
+import { CartItem } from "../components/CartItem";
+import { useCart } from "../context/CartContext";
+import styles from "../styles/Cart.module.css";
 
 export const Cart = () => {
-  const { decreaseQuantity, increaseQuantity } = useCart();
+  const { cart } = useCart();
   return (
-    <div>
-      <button
-        className={styles.quantityBtn}
-        disabled={item.quantity === 1}
-        onClick={() => decreaseQuantity(item.id)}
-      >
-        <FaMinus size={14} />
-      </button>
+    <div className={styles.cartContainer}>
+      <div className={styles.titleBox}>
+        <h3>Mi carrito</h3>
+      </div>
 
-      <p>{item.quantity}</p>
+      <div className={styles.cartDetails}>
+        <div className={styles.itemsContainer}>
+          {cart.map((item, index) => (
+            <CartItem key={index} item={item} />
+          ))}
+        </div>
 
-      <button
-        className={styles.quantityBtn}
-        disabled={item.quantity === 10}
-        onClick={() => increaseQuantity(item.id)}
-      >
-        <FaPlus size={14} />
-      </button>
+        <div className={styles.purchaseSummary}>
+          <h4>Resumen de Compra</h4>
+        </div>
+      </div>
     </div>
   );
 };
