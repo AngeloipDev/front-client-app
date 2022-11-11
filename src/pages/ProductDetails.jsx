@@ -10,6 +10,7 @@ export const ProductDetails = () => {
   const { id } = useParams();
 
   useEffect(() => {
+    window.scrollTo({ top: 0 });
     setProduct(products.find((product) => product._id === parseInt(id)));
     return () => {
       setProduct({});

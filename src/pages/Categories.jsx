@@ -58,6 +58,7 @@ export const Categories = () => {
   };
 
   useEffect(() => {
+    window.scrollTo({ top: 0 });
     setIsLoading(true);
     setData(products);
     setIsLoading(false);

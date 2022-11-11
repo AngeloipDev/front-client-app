@@ -20,7 +20,7 @@ export const CartModalItem = ({ item }) => {
       </div>
       <div className={`${styles.thirdElement} col-4`}>
         <div className={styles.itemPrice}>
-          Precio: S/ {(item.price * item.quantity).toFixed(2)}
+          <div> S/ {(item.price * item.quantity).toFixed(2)}</div>
         </div>
         <button
           className={styles.itemBtn}
