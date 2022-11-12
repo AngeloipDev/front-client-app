@@ -6,6 +6,22 @@ import styles from "../styles/Cart.module.css";
 export const Cart = () => {
   const { cart, total } = useCart();
 
+  const handleCheckout = () => {
+    const username = "Angelo";
+    const price = total;
+    const products = cart.map((item) => item.name);
+    const prices = cart.map((item) => item.price);
+    const quantities = cart.map((item) => item.quantity);
+    const order = {
+      username,
+      price,
+      products,
+      prices,
+      quantities
+    };
+    console.log(order);
+  };
+
   useEffect(() => {
     window.scrollTo({ top: 0 });
   }, []);
@@ -62,7 +78,9 @@ export const Cart = () => {
             <span>S/ {total.toFixed(2)}</span>
           </div>
 
-          <div className={styles.checkoutBtn}>Realizar Compra</div>
+          <div className={styles.checkoutBtn} onClick={handleCheckout}>
+            Realizar Compra
+          </div>
         </div>
       </div>
     </div>
